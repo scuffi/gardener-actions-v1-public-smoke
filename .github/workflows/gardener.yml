@@ -1,0 +1,21 @@
+name: Gardener Actions v1 public smoke
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: gardener-public-smoke
+  cancel-in-progress: false
+
+jobs:
+  gardener:
+    name: Exercise public-repository planning transport
+    permissions:
+      contents: read # Passed to the reusable workflow for checkout.
+      id-token: write # Passed to the reusable workflow for Gardener authentication.
+    uses: scuffi/gardener-actions-v1-public-smoke/.github/workflows/gardener-reusable.yml@9d0324729f5caa5c31a9517c846b95d8dffec76e # zizmor: ignore[stale-action-refs]
+    with:
+      harness-url: https://gardener-actions-v1-spike.agents-b8a.workers.dev
+      agent-hash: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
