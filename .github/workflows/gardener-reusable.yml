@@ -1,0 +1,39 @@
+name: Gardener public reusable smoke
+
+on:
+  workflow_call:
+    inputs:
+      harness-url:
+        required: true
+        type: string
+      agent-hash:
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  plan:
+    name: Unprivileged public-repository planning runner
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read # Required only for the unprivileged repository checkout.
+      id-token: write # Required to authenticate this job to Gardener.
+    steps:
+      - name: Check out without persisted credentials
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - name: Connect to Gardener over Cap'n Web
+        id: gardener
+        uses: scuffi/gardener-actions-v1-public-smoke/actions/runner@4ef4b1b0d9e7bbb2858d17168d08eec9b1552ac3 # zizmor: ignore[stale-action-refs]
+        with:
+          harness-url: ${{ inputs.harness-url }}
+          agent-hash: ${{ inputs.agent-hash }}
+      - name: Report terminal state
+        env:
+          GARDENER_STATUS: ${{ steps.gardener.outputs.status }}
+          GARDENER_SUMMARY: ${{ steps.gardener.outputs.summary }}
+        run: |
+          printf 'Gardener status: %s\nGardener summary: %s\n' "$GARDENER_STATUS" "$GARDENER_SUMMARY"
