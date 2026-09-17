@@ -1,0 +1,21 @@
+actions/replay-probe/action.yml
+  s_de0b486c128948::t_843db60c62c9be 1-20
+actions/replay-probe/dist/index.cjs
+  s_de0b486c128948::t_091e956fc35a3c 1-43129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f2e699efdf8165477ffcbe2d3affd4cfc9a81f24",
+  "prompts": {},
+  "sessions": {
+    "s_de0b486c128948": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0a54b-7029-705c-8802-df38dfe75e1f",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "scuffi <aferguson@cloudflare.com>"
+    }
+  }
+}
