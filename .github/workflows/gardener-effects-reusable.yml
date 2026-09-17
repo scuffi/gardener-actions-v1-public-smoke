@@ -1,0 +1,29 @@
+name: Gardener effects identity reusable smoke
+
+on:
+  workflow_call:
+    inputs:
+      harness-url:
+        required: true
+        type: string
+      agent-hash:
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  effects-identity:
+    name: Effects environment OIDC identity
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    environment: gardener-effects
+    permissions:
+      id-token: write # Required to obtain the environment-bound effects identity.
+    steps:
+      - name: Verify effects identity and one-time token use
+        uses: scuffi/gardener-actions-v1-public-smoke/actions/replay-probe@f2e699efdf8165477ffcbe2d3affd4cfc9a81f24 # zizmor: ignore[stale-action-refs]
+        with:
+          harness-url: ${{ inputs.harness-url }}
+          agent-hash: ${{ inputs.agent-hash }}
+          phase: effects
