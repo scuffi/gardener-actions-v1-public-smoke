@@ -1,0 +1,20 @@
+name: Gardener effects OIDC smoke
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: gardener-effects-identity-smoke
+  cancel-in-progress: false
+
+jobs:
+  gardener:
+    name: Verify environment-bound effects identity
+    permissions:
+      id-token: write # Passed to the trusted effects identity reusable workflow.
+    uses: scuffi/gardener-actions-v1-public-smoke/.github/workflows/gardener-effects-reusable.yml@acb13ef9f0e18fca43f46d055539cc75c59315c3 # zizmor: ignore[stale-action-refs]
+    with:
+      harness-url: https://gardener-actions-v1-spike.agents-b8a.workers.dev
+      agent-hash: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
