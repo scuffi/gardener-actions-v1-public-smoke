@@ -24,7 +24,7 @@ jobs:
         uses: scuffi/gardener-actions/actions/effects@71ec3e643887d8952ab780da42f406e7b234f1bb
         with:
           artifact-path: ${{ runner.temp }}/tampered.json
-          expected-sha256: 0000000000000000000000000000000000000000000000000000000000000000
+          expected-sha256: "0000000000000000000000000000000000000000000000000000000000000000"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           harness-url: https://gardener-runner-ingress.agents-b8a.workers.dev
       - name: Require tampered digest rejection
