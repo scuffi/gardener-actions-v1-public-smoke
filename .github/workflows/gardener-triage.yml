@@ -1,0 +1,19 @@
+name: Gardener triage
+
+on:
+  issues:
+    types: [opened]
+
+permissions: {}
+
+jobs:
+  gardener:
+    if: ${{ contains(github.event.issue.labels.*.name, 'gardener-test') }}
+    permissions:
+      contents: read
+      issues: write
+      id-token: write
+    uses: scuffi/gardener-actions-v1-public-smoke/.github/workflows/gardener-triage-reusable.yml@ba368dd86dcb8be97a096f6211602ab93f9819ce
+    with:
+      harness-url: https://gardener-runner-ingress.agents-b8a.workers.dev
+      task-bundle-hash: d3ea6c38276b0e67f6757354abbd60afc596eaafd0702622eaa8ca95499f849f
