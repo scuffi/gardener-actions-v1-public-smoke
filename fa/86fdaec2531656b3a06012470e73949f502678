@@ -1,0 +1,19 @@
+.github/workflows/gardener-triage.yml
+  s_de0b486c128948::t_d5535b1b56ea0b 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "fa86fdaec2531656b3a06012470e73949f502678",
+  "prompts": {},
+  "sessions": {
+    "s_de0b486c128948": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a0a54b-7029-705c-8802-df38dfe75e1f",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "scuffi <aferguson@cloudflare.com>"
+    }
+  }
+}
