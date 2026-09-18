@@ -1,0 +1,19 @@
+name: Gardener effect reconciliation qualification
+
+on:
+  issues:
+    types: [opened]
+
+permissions: {}
+
+jobs:
+  gardener:
+    if: ${{ contains(github.event.issue.labels.*.name, 'gardener-reconcile') }}
+    permissions:
+      contents: read
+      issues: write
+      id-token: write
+    uses: scuffi/gardener-actions-v1-public-smoke/.github/workflows/gardener-reconcile-reusable.yml@fbdff884599422067939c4de22c0d7626d94d125
+    with:
+      harness-url: https://gardener-runner-ingress.agents-b8a.workers.dev
+      task-bundle-hash: d3ea6c38276b0e67f6757354abbd60afc596eaafd0702622eaa8ca95499f849f
