@@ -15,5 +15,5 @@ jobs:
       id-token: write
     uses: scuffi/gardener-actions/.github/workflows/gardener-triage-reusable.yml@1069cbd7317970865e4366d99eb7c711df9ccee6
     with:
-      harness-url: https://gardener-actions-v1-spike.agents-b8a.workers.dev
+      harness-url: https://gardener-runner-ingress.agents-b8a.workers.dev
       task-bundle-hash: d3ea6c38276b0e67f6757354abbd60afc596eaafd0702622eaa8ca95499f849f
