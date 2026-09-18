@@ -8,7 +8,7 @@ permissions: {}
 
 jobs:
   gardener:
-    if: ${{ contains(github.event.issue.labels.*.name, 'gardener-test') }}
+    if: ${{ contains(github.event.issue.labels.*.name, 'gardener-test') && !contains(github.event.issue.labels.*.name, 'gardener-reconcile') }}
     permissions:
       contents: read
       issues: write
